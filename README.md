@@ -1,36 +1,225 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏨 Online Booking Application
 
-## Getting Started
+Aplikasi booking online yang profesional dan lengkap, dibangun dengan Next.js 16, TypeScript, dan Tailwind CSS. Sistem ini menyediakan platform modern untuk mengelola reservasi hotel/kamar dengan fitur lengkap untuk user dan admin.
 
-First, run the development server:
+## ✨ Fitur Utama
+
+### 🎯 Untuk User
+
+- **Homepage Modern** - Hero section, featured rooms, testimonials, dan CTA yang menarik
+- **Katalog Kamar Lengkap** - Browse semua kamar dengan foto dan deskripsi detail
+- **Filter & Pencarian** - Filter berdasarkan kategori, harga, dan sorting options
+- **Detail Kamar** - Informasi lengkap dengan galeri foto dan amenities
+- **Booking System** - Form booking dengan validasi lengkap dan kalkulasi harga
+- **My Reservations** - Kelola dan track semua booking Anda
+- **Autentikasi** - Sign in & sign up dengan validasi form
+- **Contact Page** - Form kontak dan informasi lengkap dengan peta lokasi
+- **About Page** - Informasi tentang layanan dan nilai perusahaan
+
+### 👨‍💼 Untuk Admin
+
+- **Dashboard Analytics** - Overview statistik lengkap (revenue, occupancy, bookings)
+- **Room Management** - CRUD operations untuk mengelola kamar
+- **Booking Management** - Monitor dan kelola semua reservasi
+- **Real-time Stats** - Statistik aktual tentang performa bisnis
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS 4
+- **Icons:** React Icons
+- **UI Components:** Custom reusable components
+- **State Management:** React Hooks
+
+## 📁 Struktur Project
+
+```
+booking/
+├── app/                          # Next.js App Router
+│   ├── about/                    # Halaman About
+│   ├── admin/                    # Admin Panel
+│   │   ├── dashboard/           # Admin Dashboard
+│   │   └── room/                # Room Management
+│   ├── contact/                 # Halaman Contact
+│   ├── myreservation/           # User Reservations
+│   ├── room/                    # Room Listing
+│   │   └── [id]/               # Room Detail
+│   ├── signin/                  # Sign In Page
+│   ├── signup/                  # Sign Up Page
+│   ├── layout.tsx               # Root Layout
+│   ├── page.tsx                 # Homepage
+│   └── globals.css              # Global Styles
+├── components/
+│   ├── navbar/                  # Navigation Components
+│   │   ├── navbar.tsx
+│   │   ├── navlink.tsx
+│   │   └── footer.tsx
+│   └── ui/                      # Reusable UI Components
+│       ├── Button.tsx
+│       ├── Input.tsx
+│       ├── TextArea.tsx
+│       └── RoomCard.tsx
+├── lib/
+│   ├── types.ts                 # TypeScript Interfaces
+│   └── data.ts                  # Mock Data & Helpers
+└── public/                      # Static Assets
+```
+
+## 🚀 Cara Menjalankan
+
+### Prerequisites
+
+- Node.js 18+
+- npm atau yarn
+
+### Installation
+
+1. **Clone repository**
+
+```bash
+git clone <repository-url>
+cd booking
+```
+
+2. **Install dependencies**
+
+```bash
+npm install
+```
+
+3. **Run development server**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. **Buka browser**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📱 Halaman-Halaman
 
-## Learn More
+| Halaman         | URL                | Deskripsi                          |
+| --------------- | ------------------ | ---------------------------------- |
+| Home            | `/`                | Landing page dengan featured rooms |
+| About           | `/about`           | Informasi tentang perusahaan       |
+| Rooms           | `/room`            | Katalog semua kamar dengan filter  |
+| Room Detail     | `/room/[id]`       | Detail kamar & booking form        |
+| Contact         | `/contact`         | Form kontak & informasi            |
+| Sign In         | `/signin`          | Halaman login                      |
+| Sign Up         | `/signup`          | Halaman registrasi                 |
+| My Reservations | `/myreservation`   | Daftar booking user                |
+| Admin Dashboard | `/admin/dashboard` | Dashboard admin                    |
+| Room Management | `/admin/room`      | CRUD kamar                         |
 
-To learn more about Next.js, take a look at the following resources:
+## 🎨 Komponen Reusable
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Button Component
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```tsx
+<Button variant="primary" size="md" fullWidth>
+  Click Me
+</Button>
+```
 
-## Deploy on Vercel
+### Input Component
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```tsx
+<Input label="Email" type="email" required placeholder="your@email.com" />
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### RoomCard Component
+
+```tsx
+<RoomCard room={roomData} />
+```
+
+## 💾 Data Structure
+
+### Room Type
+
+```typescript
+interface Room {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  capacity: number;
+  size: number;
+  bedType: string;
+  images: string[];
+  amenities: string[];
+  availability: boolean;
+  rating: number;
+  reviews: number;
+  category: 'standard' | 'deluxe' | 'suite' | 'family';
+}
+```
+
+### Booking Type
+
+```typescript
+interface Booking {
+  id: string;
+  userId: string;
+  userName: string;
+  userEmail: string;
+  roomId: string;
+  roomName: string;
+  checkIn: Date;
+  checkOut: Date;
+  guests: number;
+  totalPrice: number;
+  status: 'pending' | 'confirmed' | 'cancelled' | 'completed';
+  createdAt: Date;
+  specialRequests?: string;
+}
+```
+
+## 🔧 Scripts
+
+```bash
+# Development
+npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
+
+# Run linter
+npm run lint
+```
+
+## 🎯 Fitur yang Akan Datang
+
+- [ ] Database integration (PostgreSQL/MongoDB)
+- [ ] Backend API dengan Next.js API Routes
+- [ ] Real authentication dengan NextAuth.js
+- [ ] Payment gateway integration
+- [ ] Email notifications
+- [ ] Advanced booking calendar
+- [ ] Reviews & ratings system
+- [ ] Multi-language support
+- [ ] Dark mode
+- [ ] PWA support
+
+## 🤝 Kontribusi
+
+Contributions, issues, dan feature requests sangat diterima!
+
+## 📝 License
+
+This project is [MIT](LICENSE) licensed.
+
+## 👨‍💻 Developer
+
+Dibuat dengan ❤️ menggunakan Next.js dan TypeScript
+
+---
+
+**Happy Coding! 🚀**
