@@ -10,7 +10,18 @@ export default function SplashScreen() {
   useEffect(() => {
     setIsMounted(true);
 
-    // Splash will show every time page loads (even on refresh)
+    // Check if splash has been shown in this session
+    const hasShownSplash = sessionStorage.getItem('splashShown');
+
+    if (hasShownSplash) {
+      // If already shown, hide immediately
+      setIsVisible(false);
+      return;
+    }
+
+    // Mark splash as shown for this session
+    sessionStorage.setItem('splashShown', 'true');
+
     // Start fade out animation after 4.5 seconds
     const fadeTimer = setTimeout(() => {
       setIsAnimating(false);

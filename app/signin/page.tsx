@@ -1,5 +1,5 @@
 'use client';
-import { useState, Suspense } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
@@ -7,7 +7,7 @@ import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import { FaEnvelope, FaLock } from 'react-icons/fa';
 
-function SignInForm() {
+export default function SignInPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { login } = useAuth();
@@ -188,13 +188,5 @@ function SignInForm() {
         </div>
       </div>
     </div>
-  );
-}
-
-export default function SignInPage() {
-  return (
-    <Suspense fallback={<div className="min-h-screen bg-gray-50 flex items-center justify-center">Loading...</div>}>
-      <SignInForm />
-    </Suspense>
   );
 }
