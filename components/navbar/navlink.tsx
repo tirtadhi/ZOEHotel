@@ -20,10 +20,10 @@ const Navlink = () => {
       </button>
       <div
         className={clsx('w-full md:block md:w-auto', {
-          hidden: open,
+          hidden: !open,
         })}
       >
-        <ul className="flex flex-col font-semibold text-sm uppercase p-4 mt-4 rounded-sm bg-gray-50 md:flex-row md:items-center md:space-x-10 md:p-0 md:mt-0 md:border-0 md:bg-white">
+        <ul className="flex flex-col font-semibold text-sm uppercase p-4 mt-4 rounded-sm bg-gray-50 md:flex-row md:items-center md:space-x-6 lg:space-x-8 md:p-0 md:mt-0 md:border-0 md:bg-white">
           <li>
             <Link
               href="/"
@@ -93,7 +93,7 @@ const Navlink = () => {
             <li className="pt-2 md:pt-0">
               <Link
                 href="/signin"
-                className="py-2.5 px-6 bg-red-700 text-white hover:bg-red-500 rounded-sm"
+                className="block text-center py-2.5 px-6 bg-red-700 text-white hover:bg-red-500 rounded-sm transition"
               >
                 Sign In
               </Link>
@@ -113,7 +113,7 @@ const Navlink = () => {
               </div>
               <button
                 onClick={logout}
-                className="flex items-center gap-2 w-full py-2 px-3 text-red-600 hover:bg-red-50 rounded-sm"
+                className="flex items-center gap-2 w-full py-2 px-3 text-red-600 hover:bg-red-50 rounded-sm transition"
               >
                 <FaSignOutAlt />
                 Logout
